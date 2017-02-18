@@ -9,16 +9,84 @@
 
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
+	  <script
+	  src="https://code.jquery.com/jquery-3.1.1.min.js"
+	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	  crossorigin="anonymous"></script>
+
+	  <script src="assets/javascript/game.js"></script>
+	
+	
 
 </head>
 <body>
-	<container>	
+	<container class="container">	
+		<div class="row">
+			<div class="col-md-12">
+				<h1>PLAYERS</h1>
+			</div>
+		</div>
 		<div class="row"></div>
-			<div class = "col-md-3 players">Hermione</div>
-			<div class = "col-md-3 players">Ginny</div>
-			<div class = "col-md-3 players">Luna</div>
-			<div class = "col-md-3 players">Bellatrix</div>
+			<div class = "col-md-2 characters">
+				<h2 class = "player-one">Hermione</h2>
+			</div>
+			<div class = "col-md-2 characters">
+				<h2 class = "player-two">Luna</h2>
+			</div>
+			<div class = "col-md-2 characters">
+				<h2 class = "player-three">Ginny</h2>
+			</div>
+			<div class = "col-md-2 characters">
+				<h2 class = "player-four">Bellatrix</h2>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h1>YOUR CHARACTER</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 player">
+				<h2>player</h2>
+			</div>
+			<div class="col-md-10"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h1>OPPONENTS AVAILABLE TO ATTACK</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 opponents">
+				<h2 class="opponent-name">opponent 1</h2>
+			</div>
+			<div class="col-md-2 opponents">
+				<h2 class="opponent-name">opponent 2</h2>
+			</div>
+			<div class="col-md-2 opponents">
+				<h2 class="opponent-name">opponent 3</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<button class = "attack">Attack</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h1>DEFENDER</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 player">
+				<h2>current opponent</h2>
+			</div>
+			<div class="col-md-6"></div>
 		</div>
 	</container>
 </body>

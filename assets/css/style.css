@@ -1,3 +1,11 @@
-h1 {
-	color: purple;
+.player-one, .player-two, .player-three, .player-four {
+	color: white;
+	background-color: navy;
+	padding: 40px;
+	text-align: center;
+
+}
+
+.container {
+	margin: 20px;
 }
