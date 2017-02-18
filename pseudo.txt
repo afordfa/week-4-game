@@ -1,0 +1,40 @@
+FUNCTIONS NEEDED:
+
+Restart Game
+	unassigns current player
+	unassigns opponent
+	resets health points
+	resets player attack value
+	moves tokens back to start positions
+
+
+Attack
+	checks to see if player and opponent are assigned
+	lowers opponent HP (based on player's attack value)
+		opponent.health-points -= player.attack-value
+		if (opponent.health-points <= 0) {
+			won game
+		} else {
+			launch counterattack (lower player HP)
+			if (player.health-points <= 0) {
+				lose game
+			} else
+			increment player's attack value up
+		}
+	
+
+
+
+store player objects in array?
+when user selects player, store that as player
+make copy of array and remove player so only opponents are left
+
+PLAYER OBJECTS
+id:
+first-name:
+last-name:
+attack-value:
+starting-health-points:
+current-health-points:
+counter-attack-value:
+
