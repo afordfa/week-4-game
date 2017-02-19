@@ -7,9 +7,33 @@ $(document).ready(function() {
 	var opponentSelected = false;
 	var gameOver = "no";
 	var opponentsRemaining = 2;
+	var opponentIndex = 0;
 
 
-	function generatePlayer (firstName, lastName, id, attackValue, currentAttack, startingHP, currentHP, counterValue) {
+
+	function displayStartingPlayers() {
+		$(".addCharacters").empty();
+		for (var i = 1; i <= players.length; i++) {
+			$(".addCharacters")
+			.append("<img src = " + players[i-1].imgSource + " class = \"characters\" data-index = " + i+ ">");
+		}
+	};
+
+
+
+	function displayAvailableOpponents () {
+		$(".addOpponents").empty();
+		for (var i = 0; i < availableOpponents.length; i++) {
+			var possibleOpponent = availableOpponents[i];
+			var dataIndex = possibleOpponent.id;
+			$(".addOpponents")
+			.append("<img src = " + possibleOpponent.imgSource + " class = \"characters opponents\" data-index = " + dataIndex + ">");
+		}
+	}
+
+
+
+	function generatePlayer (firstName, lastName, id, attackValue, currentAttack, startingHP, currentHP, counterValue, imgSource) {
 		var player = {
 			firstName: firstName,
 			lastName: lastName,
@@ -18,72 +42,50 @@ $(document).ready(function() {
 			currentAttack: currentAttack,
 			startingHP: startingHP,
 			currentHP: currentHP,
-			counterValue: counterValue
+			counterValue: counterValue,
+			imgSource: imgSource
 		}
 		return player;
 	}
 
-	var playerOne = generatePlayer("Hermione", "Granger", 1, 8, 8, 180,  180, 25);
-	var playerTwo = generatePlayer("Luna", "Lovegood", 2, 6, 6, 10,  10, 25);
-	var playerThree = generatePlayer("Ginny", "Weasley", 3, 7, 7, 40,  40, 25);
-	var playerFour = generatePlayer("Bellatrix", "Lestrange", 4, 5, 5, 1,  1, 25);
+	var playerOne = generatePlayer("Hermione", "Granger", 1, 8, 8, 180,  180, 20, "assets/images/hermione.jpg");
+	var playerTwo = generatePlayer("Luna", "Lovegood", 2, 6, 6, 120,  120, 5, "assets/images/luna.jpg");
+	var playerThree = generatePlayer("Ginny", "Weasley", 3, 7, 7, 100,  100, 13, "assets/images/ginny.jpg");
+	var playerFour = generatePlayer("Bellatrix", "Lestrange", 4, 5, 5, 150,  150, 25, "assets/images/bellatrix.jpg");
+	var players = [playerOne, playerTwo, playerThree, playerFour];
+	var currentPlayer = {};
+	var availableOpponents = [playerOne, playerTwo, playerThree, playerFour];
 
+	$(document).on("click", ".characters", selectPlayer);
 
+	console.log(players);
 
 	function selectPlayer() {
-		$(".player-one").on("click", function() {
-			if (!playerSelected) {
-				currentPlayer = playerOne;
-				playerSelected = true;
-				console.log(currentPlayer);
-			} else if (!opponentSelected) {
-				opponent = playerOne;
-				opponentSelected = true;
-				console.log(opponent);
-			}
-		})
-	
-		$(".player-two").on("click", function() {
-			if (!playerSelected) {
-				currentPlayer = playerTwo;
-				playerSelected = true;
-				console.log(currentPlayer);
-			} else if (!opponentSelected) {
-				opponent = playerTwo;
-				opponentSelected = true;
-				console.log(opponent);
-			}
-		})
-	
-		
-		$(".player-three").on("click", function() {
-			if (!playerSelected) {
-				currentPlayer = playerThree;
-				playerSelected = true;
-				console.log(currentPlayer);
-			} else if (!opponentSelected) {
-				opponent = playerThree;
-				opponentSelected = true;
-				console.log(opponent);
-			}
-		})
-	
-	
-		$(".player-four").on("click", function() {
-			if (!playerSelected) {
-				currentPlayer = playerFour;
-				playerSelected = true;
-				console.log(currentPlayer);
-			} else if (!opponentSelected) {
-				opponent = playerFour;
-				opponentSelected = true;
-				console.log(opponent);
-			}
-		})
+		var selection = parseInt($(this).attr("data-index"));
+		if(!playerSelected) {
+			currentPlayer = players[selection-1];
+			var indexToSplice = availableOpponents.indexOf(currentPlayer);
+			availableOpponents.splice(indexToSplice, 1);
+			playerSelected = true;
+			$(".addCharacters").empty();
+			$(".addCurrentPlayer").append("<img src = \"" + currentPlayer.imgSource + "\" class = \"currentPlayer\">");
+			console.log(currentPlayer);
+			console.log(availableOpponents);
+			displayAvailableOpponents();
+		} else if (!opponentSelected) {
+			opponent = players[selection-1];
+			console.log(selection);
+			console.log(opponent);
+			var indexToSplice = availableOpponents.indexOf(opponent);
+			availableOpponents.splice(indexToSplice, 1);
+			opponentSelected = true;
+			$(".addCurrentOpponent").append("<img src = \"" + opponent.imgSource + "\" class = \"currentOpponent\">");
+			console.log(availableOpponents);
+			displayAvailableOpponents();
+		}
 	};
 
 
-	selectPlayer();
 	$(".attack").on("click", function() {
 		if (!playerSelected) {
 			alert("Select a player!")
@@ -102,12 +104,12 @@ $(document).ready(function() {
 		if((gameOver === "no") && (opponentSelected = true)) {
 			opponent.currentHP -= player.currentAttack;
 			if (opponent.currentHP <= 0) {
+				alert("You won");
 				opponentSelected = false;
 				opponentsRemaining--;
-				if (opponentsRemaining == 0) {
+				
+			} else if (opponentsRemaining == 0) {
 					gameOver = "won"
-				}
-				alert("You won");
 			} else {
 				player.currentHP -= opponent.counterValue;
 				if (player.currentHP <= 0) {
@@ -122,4 +124,8 @@ $(document).ready(function() {
 		}
 		
 	}
+
+
+	displayStartingPlayers();
+
 });
