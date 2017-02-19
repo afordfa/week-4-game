@@ -169,26 +169,8 @@ $(document).ready(function() {
 
 
 	$(".restart").on("click", function() {
-		console.log("clicked");
-		currentPlayer = "";
-		opponent = "";
-		playerSelected = false;
-		opponentSelected = false;
-		gameOver = "no";
-		opponentsRemaining = 2;
-		opponentIndex = 0;
-		playerOne = generatePlayer("Hermione Granger", 1, 8, 8, 180,  180, 20, "assets/images/hermione.jpg");
-		playerTwo = generatePlayer("Luna Lovegood", 2, 6, 6, 120,  120, 5, "assets/images/luna.jpg");
-		playerThree = generatePlayer("Ginny Weasley", 3, 7, 7, 100,  100, 13, "assets/images/ginny.jpg");
-		playerFour = generatePlayer("Bellatrix Lestrange",  4, 5, 5, 150,  150, 25, "assets/images/bellatrix.jpg");
-		players = [playerOne, playerTwo, playerThree, playerFour];
-		availableOpponents = [playerOne, playerTwo, playerThree, playerFour];
-		currentPlayer = {};
-		$(".addCurrentPlayer").empty();
-		$(".addCurrentOpponent").empty();
-		$(".opponentArea").empty();
-		$(".fightDescription").empty();
-		displayStartingPlayers();
+		// console.log("clicked");
+		document.location.reload();
 	});
 
 
