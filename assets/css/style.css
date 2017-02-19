@@ -1,8 +1,45 @@
-img {
-	margin: 10px;
-
+.playerBox1, .playerBox2,.playerBox3, .playerBox4, .addCurrentPlayer {
+	background-color: #181866;
+	color: white;
 }
 
-.container {
+
+.addOpponent1, .addOpponent2, .addOpponent3 {
+	background-color: #661818;
+	color: white;
 	margin: 20px;
+}
+
+.addCurrentPlayer {
+	margin: 20px;
+}
+
+.addCurrentOpponent {
+	background-color: black;
+	color: white;
+	margin: 20px;
+}
+
+img {
+	width: 85%;
+	height: auto;
+}
+
+
+p {
+	text-align: center;
+	padding: 5px 0px 5px 0px;
+}
+
+.col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, 
+.col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1 {
+	min-height: 0px;
+}
+
+.row {
+	margin: 0px;
+}
+
+.attackSection {
+	margin-top: 20px;
 }

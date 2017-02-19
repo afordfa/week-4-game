@@ -3,6 +3,9 @@
 <head>
 	<title>Women of Hogwarts RPG</title>
 
+	<!-- HEROKU LINK -->
+	<!-- https://shrouded-shore-75342.herokuapp.com/ -->
+
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -25,41 +28,107 @@
 </head>
 <body>
 	<container class="container">	
-		<div class="row">
 
-		</div>
+
+
+
+	<!-- initial characters section -->
+
 		<div class="row addCharacters">
-
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<h1>You</h1>
+			<div class="col-md-2 text-center playerColumn">
+				<div class="playerBox1">
+					<!-- javascript adds image here -->
+				</div>
 			</div>
+			<div class="col-md-2 text-center playerColumn">
+				<div class="playerBox2">
+					<!-- javascript adds image here -->
+				</div>
+			</div>
+			<div class="col-md-2 text-center playerColumn">
+				<div class="playerBox3">
+					<!-- javascript adds image here -->
+				</div>
+			</div>
+			<div class="col-md-2 text-center playerColumn">
+				<div class="playerBox4">
+					<!-- javascript adds image here -->
+				</div>
+			</div>		
 		</div>
-		<div class="row addCurrentPlayer">
-	
-		</div>
+
+
+
+
+		<!-- available opponents section -->
+
 		<div class="row">
 			<div class="col-md-12">
 				<h1>Opponents Available to Attack</h1>
 			</div>
 		</div>
-		<div class="row addOpponents">
-
+		<div class="row opponentArea">
+			<!-- javascript adds images here -->
 		</div>
+
+
+
+
+
+
+		<!-- current game section -->
+
 		<div class="row">
-			<div class="col-md-12">
-				<button class = "attack">Attack</button>
+
+			<!-- your character -->
+			<div class="col-md-2">
+				<div class="row text-center">
+					<h1>You</h1>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center addCurrentPlayer">
+				<!-- javascript adds images here -->
+					</div>	
+				</div>
+			</div>
+
+			<!-- current opponent -->
+			<div class="col-md-2">
+				<div class="row text-center">
+					<h1>Opponent</h1>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center addCurrentOpponent">
+					<!-- javascript adds images here -->
+					</div>
+				</div>
+			</div>
+
+			<!-- extra space -->
+			<div class="col-md-8"></div>
+		</div>
+
+
+
+		<!-- attack button -->
+
+		<div class="row attackSection">
+			<div class="col-md-12 buttonArea">
+				<button class = "btn btn-danger attack">Attack</button>
+				<button class = "btn btn-default restart">Play Again</button>
 			</div>
 		</div>
+
+
+
+		<!-- fight narrative section -->
 		<div class="row">
-			<div class="col-md-12">
-				<h1>Current Opponent</h1>
+			<div class="col-md-6 fightDescription">
+				
 			</div>
 		</div>
-		<div class="row addCurrentOpponent">
 
-		</div>
+
 	</container>
 </body>
 </html>
