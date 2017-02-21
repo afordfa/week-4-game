@@ -10,10 +10,12 @@ $(document).ready(function() {
 	var opponentsRemaining = 2;
 	var opponentIndex = 0;
 
-	var playerOne = generatePlayer("Hermione Granger", 1, 8, 8, 180,  180, 20, "assets/images/hermione.jpg");
-	var playerTwo = generatePlayer("Luna Lovegood", 2, 6, 6, 120,  120, 5, "assets/images/luna.jpg");
-	var playerThree = generatePlayer("Ginny Weasley", 3, 7, 7, 100,  100, 13, "assets/images/ginny.jpg");
-	var playerFour = generatePlayer("Bellatrix Lestrange",  4, 5, 5, 150,  150, 25, "assets/images/bellatrix.jpg");
+
+							// (name, id, attackValue, currentAttack, startingHP, currentHP, counterValue, imgSource)
+	var playerOne = generatePlayer("Hermione Granger", 			1, 6, 6, 120,  120, 20, "assets/images/hermione.jpg");
+	var playerTwo = generatePlayer("Luna Lovegood", 			2, 7, 7, 130,  130, 5, "assets/images/luna.jpg");
+	var playerThree = generatePlayer("Ginny Weasley", 			3, 7, 7, 100,  100, 13, "assets/images/ginny.jpg");
+	var playerFour = generatePlayer("Bellatrix Lestrange",  	4, 5, 5, 140,  140, 20, "assets/images/bellatrix.jpg");
 	var players = [playerOne, playerTwo, playerThree, playerFour];
 	var availableOpponents = [playerOne, playerTwo, playerThree, playerFour];
 	var currentPlayer = {};
@@ -90,6 +92,7 @@ $(document).ready(function() {
 			displayAvailableOpponents();
 		} else if (!opponentSelected) {
 			opponent = players[selection-1];
+			$(".fightDescription").empty();
 			var indexToSplice = availableOpponents.indexOf(opponent);
 			availableOpponents.splice(indexToSplice, 1);
 			opponentSelected = true;
@@ -101,22 +104,22 @@ $(document).ready(function() {
 	function describeAttack () {
 		if (gameOver === "lost") {
 			$(".fightDescription").empty();
-			$(".fightDescription").append("<p>You attacked " + opponent.name + " for " + currentPlayer.currentAttack + " damage.</p>");
-			$(".fightDescription").append("<p>" + opponent.name + " attacked you back for " + opponent.counterValue + " damage.</p>");
-			$(".fightDescription").append("<p>You have been defeated.");
+			$(".fightDescription").append("<p class = \"attackText\">You attacked " + opponent.name + " for " + currentPlayer.currentAttack + " damage.</p>");
+			$(".fightDescription").append("<p class = \"attackText\">" + opponent.name + " attacked you back for " + opponent.counterValue + " damage.</p>");
+			$(".fightDescription").append("<p class = \"attackText\">You have been defeated.");
 			$(".buttonArea").append("<button class = \"btn btn-default restart\">Play Again</button>");
 		} else if (gameOver === "won") {
 			$(".fightDescription").empty();
-			$(".fightDescription").append("<p>You attacked " + opponent.name + " for " + currentPlayer.currentAttack + " damage.</p>");
-			$(".fightDescription").append("<p>" + opponent.name + " attacked you back for " + opponent.counterValue + " damage.</p>");
-			$(".fightDescription").append("<p>You have conquered all your opponents.");
+			$(".fightDescription").append("<p class = \"attackText\">You attacked " + opponent.name + " for " + currentPlayer.currentAttack + " damage.</p>");
+			$(".fightDescription").append("<p class = \"attackText\">" + opponent.name + " attacked you back for " + opponent.counterValue + " damage.</p>");
+			$(".fightDescription").append("<p class = \"attackText\">You have conquered all your opponents.");
 			$(".buttonArea").append("<button class = \"btn btn-default restart\">Play Again</button>");
 		} else if ((currentPlayer.currentHP > 0) && (opponent.currentHP > 0)) {
 			$(".fightDescription").empty();
-			$(".fightDescription").append("<p>You attacked " + opponent.name + " for " + currentPlayer.currentAttack + " damage.</p>");
-			$(".fightDescription").append("<p>" + opponent.name + " attacked you back for " + opponent.counterValue + " damage.</p>");
+			$(".fightDescription").append("<p class = \"attackText\">You attacked " + opponent.name + " for " + currentPlayer.currentAttack + " damage.</p>");
+			$(".fightDescription").append("<p class = \"attackText\">" + opponent.name + " attacked you back for " + opponent.counterValue + " damage.</p>");
 		} else if ((gameOver === "no") && (opponent.currentHP <= 0)) {
-			$(".fightDescription").append("<p>You defeated " + opponent.name + ". Pick another opponent </p>");
+			$(".fightDescription").append("<p class = \"attackText\">You defeated " + opponent.name + ". Pick another opponent </p>");
 		}
 	};
 
@@ -129,11 +132,9 @@ $(document).ready(function() {
 				describeAttack();
 				opponentSelected = false;
 				opponentsRemaining--;
-				console.log(gameOver);
 			} else if ((opponentsRemaining == 0) && (opponent.currentHP <= 0)) {
 					gameOver = "won"
 					describeAttack();
-					console.log(gameOver);
 			} else {
 				player.currentHP -= opponent.counterValue;
 				displayCurrentPlayer();
@@ -142,7 +143,6 @@ $(document).ready(function() {
 				if (player.currentHP <= 0) {
 					gameOver = "lost";
 					describeAttack();
-				console.log(gameOver);
 				} else {
 					player.currentAttack += player.attackValue;
 				}
@@ -158,17 +158,17 @@ $(document).ready(function() {
 		
 		if (!playerSelected) {
 			$(".fightDescription").empty();
-			$(".fightDescription").append("<p>Select a player!</p>");
+			$(".fightDescription").append("<p class = \"attackText\">Select a player!</p>");
 		} else if (!opponentSelected) {
 			$(".fightDescription").empty();
-			$(".fightDescription").append("<p>Select an opponent!</p>");
+			$(".fightDescription").append("<p class = \"attackText\">Select an opponent!</p>");
 		} else {
 			attack(currentPlayer, opponent);
 		}
 	});
 
 
-	$(".restart").on("click", function() {
+	$(document).on("click", ".restart", function() {
 		// console.log("clicked");
 		document.location.reload();
 	});

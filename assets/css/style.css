@@ -1,3 +1,10 @@
+body {
+	background-image: url("../images/hallows.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+}
+
 .playerBox1, .playerBox2,.playerBox3, .playerBox4, .addCurrentPlayer {
 	background-color: #181866;
 	color: white;
@@ -29,6 +36,10 @@ img {
 p {
 	text-align: center;
 	padding: 5px 0px 5px 0px;
+}
+
+.attackText {
+	font-size: 24px;
 }
 
 .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, 
