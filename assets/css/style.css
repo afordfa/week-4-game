@@ -5,6 +5,11 @@ body {
 	color: white;
 }
 
+h1 {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
 .playerBox1, .playerBox2,.playerBox3, .playerBox4, .addCurrentPlayer {
 	background-color: #181866;
 	color: white;
